@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<htm>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Quiz Application</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="quizCtrl.js"></script>
+        <link href="style.css" rel="stylesheet" />
+    </head>
+
+    <body ng-app ng-controller="QuizController">
+        <h3>Kvíz aplikace</h3>
+
+        Vybrané téma: {{quiz.name}}
+        <br>
+        Celkem otázek: {{questions.length}}
+        <br>
+        <br>
+        <form>
+            <div ng-repeat="q in questions">
+                <div>{{q.Id}}. {{q.Name}}</div>
+                <p>
+                    <ul>
+                        <li ng-repeat="o in q.Options">
+                            <input type="checkbox" ng-model="o.answer">
+                            {{o.Name}}
+                        </li>
+                    </ul>
+                </p>
+            </div>
+            <hr> Pagination todo
+            <hr>
+            <button>Quiz</button>
+            <button>Review</button>
+            <button ng-click="submit()">Submit Quiz</button>
+        </form>
+        <br>
+        {{isSubmited}}
+        <div ng-if="isSubmitted">
+            <label>Vysledek: {{success}}</label>
+            <div ng-if="success === true">
+                Uspech
+            </div>
+            <div ng-if="success === false">
+                Neuspech
+            </div>
+        </div>
+
+    </body>
+</htm>
