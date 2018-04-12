@@ -46,6 +46,32 @@
                 Neuspech
             </div>
         </div>
+        <br>
+        <br>
+        <form name="newQuestionForm" novalidate>
+            <table border="0">
+                <tr>
+                    <td>Enter question:</td>
+                    <td><input type="text" ng-model="question"></td>
+                </tr>
+                <tr>
+                    <td>Enter correct answer:</td>
+                    <td><input type="text" ng-model="answer"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>    
+                        <input type="button" value="Reset" ng-click="resetQuestion()">
+                        <input type="button" ng-click="addNewQuestion()" value="Submit">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">{{strQuestionAdded}}</td>
+                </tr>
+            </table>
+
+        </form>
 
     </body>
 </htm>

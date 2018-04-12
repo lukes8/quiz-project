@@ -2,6 +2,7 @@ function QuizController($scope) {
 
     $scope.isSubmitted = false;
     $scope.success = false;
+    $scope.strQuestionAdded = "";
 
     $scope.quiz = {
         "Id": 1,
@@ -78,6 +79,8 @@ function QuizController($scope) {
     $scope.totalItems = 4;
     $scope.currentPage = 1;
     $scope.itemsPerPage = 5;
+    $scope.question = "";
+    $scope.answer = "";
 
     
     $scope.isUndefined = function (thing) {
@@ -111,6 +114,25 @@ function QuizController($scope) {
 
     }
 
+    //TODO pridat getLastId() a jestli je multiplechoice
+    $scope.addNewQuestion = function() {
+        $scope.strQuestionAdded = "Question was added";
+        $scope.questions.push({
+            "Id": 1,
+            "Name": $scope.question, 
+            "QuestionTypeId": 1,
+            "Options": [
+                { "Id": 1055, "QuestionId": 1010, 
+                "Name": $scope.answer, "IsAnswer": false }],
+            "QuestionType": { "Id": 1, "Name": "Multiple Choice", "IsActive": true }
+        });
+    }
+
+    $scope.resetQuestion = function() {
+        $scope.strQuestionAdded = "Question was reset";
+        $scope.question = "";
+        $scope.answer = "";
+    }
 
     $scope.loadQuiz();
 
